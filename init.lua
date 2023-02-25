@@ -64,7 +64,20 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
+    "adalessa/laravel.nvim",
+    dependencies = {
+        "nvim-telescope/telescope.nvim",
+    },
+    cmd = {"Sail", "Artisan", "Composer"},
+    keys = {
+        {"<leader>pa", ":Artisan<cr>"},
+    },
+    config = function()
+        require("laravel").setup()
+        require("telescope").load_extension("laravel")
+    end, 
+
+-- NOTE: First, some plugins that don't require any configuration
   'github/copilot.vim',
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -496,7 +509,10 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
+local laravel_actions = require("laravel.code-actions")
+local sources = {
+  laravel_actions.relationships,
+}
 local null_ls = require("null-ls")
 
 local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
@@ -504,6 +520,7 @@ local event = "BufWritePre" -- or "BufWritePost"
 local async = event == "BufWritePost"
 
 null_ls.setup({
+  sources = sources,
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
       vim.keymap.set("n", "<Leader>f", function()
