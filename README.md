@@ -1,5 +1,8 @@
 # kickstart.nvim
 
+-node version 18
+$yarn global add typescript typescript-language-server
+$yarn global add @fsouza/prettierd
 ### Introduction
 
 A starting point for Neovim that is:
