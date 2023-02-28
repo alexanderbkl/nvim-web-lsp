@@ -64,7 +64,6 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-    "adalessa/laravel.nvim",
     dependencies = {
         "nvim-telescope/telescope.nvim",
     },
@@ -72,10 +71,6 @@ require('lazy').setup({
     keys = {
         {"<leader>pa", ":Artisan<cr>"},
     },
-    config = function()
-        require("laravel").setup()
-        require("telescope").load_extension("laravel")
-    end, 
 
 -- NOTE: First, some plugins that don't require any configuration
   'github/copilot.vim',
@@ -294,7 +289,7 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 --NeoTreeShowToggle when press <leader>o (Explorer):
-vim.keymap.set('n', '<leader>o', ':NeoTreeShowToggle<CR>', { desc = '[E]xplorer' })
+vim.keymap.set('n', '<leader>e', ':NeoTreeShowToggle<CR>', { desc = '[E]xplorer' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch the [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -508,10 +503,6 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
-}
-local laravel_actions = require("laravel.code-actions")
-local sources = {
-  laravel_actions.relationships,
 }
 local null_ls = require("null-ls")
 
