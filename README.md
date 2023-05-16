@@ -3,6 +3,10 @@
 -node version 18
 $yarn global add typescript typescript-language-server
 $yarn global add @fsouza/prettierd
+
+:Copilot setup
+
+
 ### Introduction
 
 A starting point for Neovim that is:
