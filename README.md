@@ -4,6 +4,7 @@
 $yarn global add typescript typescript-language-server
 $yarn global add @fsouza/prettierd
 
+:Mason
 :Copilot setup
 
 
