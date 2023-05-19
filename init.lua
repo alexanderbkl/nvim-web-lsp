@@ -73,6 +73,7 @@ require('lazy').setup({
     },
 
 -- NOTE: First, some plugins that don't require any configuration
+  'Pocco81/auto-save.nvim',
   'github/copilot.vim',
   -- Git related plugins
   'tpope/vim-fugitive',
