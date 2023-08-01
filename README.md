@@ -1,8 +1,53 @@
-# kickstart.nvim
+# kickstart.nvim Ubuntu installation process:
 
--node version 18
-$yarn global add typescript typescript-language-server
-$yarn global add @fsouza/prettierd
+# Install NeoVim
+
+```
+curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+tar xzvf nvim-linux64.tar.gz
+rm nvim-linux64.tar.gz
+echo 'export PATH=$PATH:/path/to/extracted/tarball/bin' >> ~/.bashrc
+source ~/.bashrc
+```
+
+# Clone this reposiroty in config
+
+```
+cd ~/.config/
+git clone https://github.com/alexanderbkl/nvim-web-lsp.git
+mv nvim-web-lsp nvim
+```
+
+# Install node version 18 minimum
+
+```
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
+```
+
+# Install development tools for native addons
+
+```
+sudo apt-get install gcc g++ make
+```
+
+# Install yarn package manager
+
+```
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+     echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+     sudo apt-get update && sudo apt-get install yarn
+```
+
+# Install NeoVim plugins
+
+```
+yarn global add typescript typescript-language-server
+yarn global add @fsouza/prettierd
+```
+
+To configure dependencies and copilot, type in nvim:
+
 
 :Mason
 
